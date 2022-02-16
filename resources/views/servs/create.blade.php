@@ -1,4 +1,4 @@
-@extends('layoutdash')
+@extends('layoutdashrep')
 
 @section('content')
 

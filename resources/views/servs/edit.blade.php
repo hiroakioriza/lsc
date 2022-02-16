@@ -1,4 +1,4 @@
-@extends('layoutdash')
+@extends('layoutdashrep')
 
 @section('content')
 
@@ -31,22 +31,22 @@
         <label for="KategoriBarang" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Kategori Barang</label>
         <select id="Kategori" type="text" name="Kategori" placeholder="Kategori Barang" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" value="{{ $serv->Kategori }}" required />
             <option disabled="disabled" selected="selected">Pilih Kategori Barang</option> 
-            <option>Komputer</option> 
-            <option>Laptop</option> 
-            <option>Lainnya</option>
+            <option {{ $serv->Kategori == 'Komputer' ? 'selected' : '' }}>Komputer</option> 
+            <option {{ $serv->Kategori == 'Laptop' ? 'selected' : '' }}>Laptop</option> 
+            <option {{ $serv->Kategori == 'Lainnya'  ? 'selected': '' }}>Lainnya</option>
         </select>
         <label for="Kondisi" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Kondisi</label>
         <input id="Kondisi" type="text" name="Kondisi" placeholder="Kondisi Barang" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" value="{{ $serv->Kondisi }}"  required />
         <label for="Status" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Status</label>
         <select id="Status" type="text" name="Status" placeholder="Status Barang" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" value="{{ $serv->Status }}"  required />
             <option disabled="disabled" selected="selected">Set Status Barang</option> 
-            <option>Barang Masuk</option>
-            <option>Menunggu Antrian</option> 
-            <option>On Process</option> 
-            <option>Gagal</option>
-            <option>Cancel</option>
-            <option>Berhasil</option>
-            <option>Komplenan</option>
+            <option {{ $serv->Status == 'Barang Masuk' ? 'selected' : '' }}>Barang Masuk</option>
+            <option {{ $serv->Status == 'Menunggu Antrian' ? 'selected' : '' }}>Menunggu Antrian</option> 
+            <option {{ $serv->Status == 'On Process' ? 'selected' : '' }}>On Process</option> 
+            <option {{ $serv->Status == 'Gagal' ? 'selected' : '' }}>Gagal</option>
+            <option {{ $serv->Status == 'Cancel' ? 'selected' : '' }}>Cancel</option>
+            <option {{ $serv->Status == 'Berhasil' ? 'selected' : '' }}>Berhasil</option>
+            <option {{ $serv->Status == 'Komplenan' ? 'selected' : '' }}>Komplenan</option>
         </select>
         <label for="Notes" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Notes</label>
         <textarea id="Notes" type="text" name="Notes" placeholder="Masuk Air" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner h-32" maxlength="50" required />{{ $serv->Notes }}</textarea>

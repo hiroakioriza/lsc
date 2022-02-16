@@ -126,7 +126,7 @@
     <div class="flex items-center justify-center bg-gray-900">
       <div class="col-span-12">
         <div class="overflow-auto lg:overflow-visible ">
-          <table class="table text-gray-400 border-separate space-y-6 text-sm">
+          <table class="table text-gray-400 border-separate space-y-6 text-sm table-auto">
             <thead class="bg-gray-800 text-gray-500">
                     <tr>
                         <th class="py-3 px-6 text-left" width="20px">No</th>

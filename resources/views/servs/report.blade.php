@@ -1,4 +1,4 @@
-@extends('layoutdash')
+@extends('layoutdashrep')
 
 @section('content')
     <div class="flex relative" x-data="{navOpen: false}">
@@ -149,14 +149,14 @@
                 
                 <!-- Date Picker -->
                 <div class="my-2">
-                    <form action="{{ route('filter.date') }}" method="GET">
+                    <form action="{{ route('rekap.data') }}" method="GET" target="_blank">
                         <label for="datepicker" class="font-bold mt-3 mb-1 text-gray-700 block">Select Date</label>
                         <div class="flex items-center rounded-md mt-3 animate__animated animate__fadeInLeft">
                             <input type="date" class="input input-bordered focus:outline-none w-52 rounded-md border-gray-300 bg-white" name="start_date" required>
                             <div class="inline-block px-2 h-full">to</div>
                             <input type="date" class="input input-bordered focus:outline-none w-52 rounded-md border-gray-300 bg-white" name="end_date" required>
                             <div class="inline-block px-2 h-full"></div>
-                            <button class="btn btn-primary w-20 rounded bg-blue-600 border-none focus:outline-none focus:ring-0" type="submit">Rekap</button>
+                            <button class="btn btn-primary w-20 rounded bg-blue-600 border-none focus:outline-none focus:ring-0" type="submit" style="cursor: pointer;">Rekap</button>
                         </div>
                     </form>
                 </div>

@@ -268,6 +268,12 @@
                 </div>
                 <!-- END OF STATISTICS -->
 
+                <div class="grid grid-cols-12 gap-4 flow-row">
+                    <div class="col-span-12 bg-white shadow rounded-sm my-2.5 overflow-x-auto animate__animated animate__fadeInUp">
+                        <canvas id="canvas" height="280" width="600"></canvas>
+                    </div>
+                </div>
+
                 <!-- Filter -->
 
                 <div class="animate__animated animate__fadeInLeft">
@@ -318,7 +324,7 @@
                                     <td class="py-3 px-6 text-left">{{ $servisan->KodeServis }}</td>
                                     <td class="py-3 px-6 text-center">{{ $servisan->NamaBarang }}</td>
                                     <td class="py-3 px-6 text-center">{{ $servisan->Kategori }}</td>
-                                    <td class="py-3 px-6 text-center">{{ $servisan->Kondisi }}</td>
+                                    <td class="py-3 px-6 text-center">{{ mb_strimwidth($servisan->Kondisi, 0, 64, '...') }}</td>
                                     <td class="py-3 px-6 text-center">
                                         @switch($servisan->Status)
                                             @case('Barang Masuk')
@@ -420,9 +426,43 @@
                     {!! $servs->links() !!}
                 </div>
                 <!-- END OF TABLE -->
-
             </section>
             <!-- END OF PAGE CONTENT -->
         </main>
     </div>
+
+    @push('scripts')
+        <script>
+            var barChartData = {
+                labels: MONTH_SHORT_NAMES,
+                datasets: [{
+                    label: 'Jumlah Servis',
+                    backgroundColor: "pink",
+                    data: @json($serArr)
+                }]
+            };
+        
+            window.onload = function() {
+                var ctx = document.getElementById("canvas").getContext("2d");
+                window.myBar = new Chart(ctx, {
+                    type: 'bar',
+                    data: barChartData,
+                    options: {
+                        elements: {
+                            rectangle: {
+                                borderWidth: 2,
+                                borderColor: '#c1c1c1',
+                                borderSkipped: 'bottom'
+                            }
+                        },
+                        responsive: true,
+                        title: {
+                            display: true,
+                            text: 'Jumlah Servis Bulanan'
+                        }
+                    }
+                });
+            };
+        </script>
+    @endpush
 @endsection

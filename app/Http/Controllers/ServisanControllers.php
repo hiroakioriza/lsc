@@ -42,11 +42,66 @@ class ServisanControllers extends Controller
         return redirect("login-admin")->with('succes','Email / Password Salah !');
     }
 
+    // public function dashboard()
+    // {
+    //     $servs = Servisan::select('id', 'created_at')
+    //     ->get()
+    //     ->groupBy(function($date) {
+    //         //return Carbon::parse($date->created_at)->format('Y'); // grouping by years
+    //         return Carbon::parse($date->created_at)->format('m'); // grouping by months
+    //     });
+
+    //     $servmcount = [];
+    //     $servArr = [];
+
+    //     foreach ($servs as $key => $value) {
+    //         $servmcount[(int)$key] = count($value);
+    //     }
+
+    //     for($i = 0; $i < 12; $i++){
+    //         if(!empty($servmcount[$i])){
+    //             $servArr[$i] = $servmcount[$i];    
+    //         }else{
+    //             $servArr[$i] = 0;    
+    //         }
+    //     }
+
+    //     return view('beta-test', compact('servArr'));
+    // }
+
     public function dashboard()
     {
         if(Auth::check()){
             $servs = Servisan::latest()->paginate(5);
+
+            # Data nganggo statistik
+            $servsall = Servisan::select('id', 'created_at')
+                ->get()
+                ->groupBy(function($date) {
+                    //return Carbon::parse($date->created_at)->format('Y'); // grouping by years
+                    return Carbon::parse($date->created_at)->format('m'); // grouping by months
+                });
+    
+            # Data initial
+            $servmcount = [];
+            $serArr = [];
+    
+            # Ngeloop
+            foreach ($servsall as $key => $value) {
+                $servmcount[(int)$key] = count($value);
+            }
+    
+            # Statistik bulanan
+            for($i = 1; $i <= 12; $i++){
+                if(!empty($servmcount[$i])){
+                    $serArr[$i] = $servmcount[$i];    
+                }else{
+                    $serArr[$i] = 0;    
+                }
+            }
+
             return view ('servs.index', [
+                'serArr' => array_values($serArr),
                 'servs' => $servs,
                 'berhasil' => Servisan::where('Status','Berhasil')->count(),
                 'cancel' => Servisan::where('Status','Cancel')->count(),
@@ -69,6 +124,27 @@ class ServisanControllers extends Controller
         }
   
         return redirect("login-admin")->with('succes','You are not allowed to access');
+    }
+
+    public function rekapdata()
+    {
+        if (isset($_GET['start_date'] , $_GET['end_date'])) {
+
+            $from = $_GET['start_date'];
+            $to = $_GET['end_date'];
+            $servs = DB::table('servisans')
+                    ->whereBetween('created_at',[$from,$to])
+                    ->get();
+
+        } else {
+            $servs = DB::table('servisans')->latest()->get();
+        }
+
+        $sum_servs = collect($servs)->sum('EstHarga');
+        
+        return view('servs.pdfexp', compact('servs', 'sum_servs'));
+        // $pdf = PDF::loadView('licencie_structure.show', compact('licencie'));
+        // return $pdf->download('invoice.pdf');
     }
 
 
@@ -260,6 +336,28 @@ class ServisanControllers extends Controller
     {
         if(isset($_GET['query'])){
 
+            $servsall = Servisan::select('id', 'created_at')
+            ->get()
+            ->groupBy(function($date) {
+                //return Carbon::parse($date->created_at)->format('Y'); // grouping by years
+                return Carbon::parse($date->created_at)->format('m'); // grouping by months
+            });
+    
+            $servmcount = [];
+            $serArr = [];
+    
+            foreach ($servsall as $key => $value) {
+                $servmcount[(int)$key] = count($value);
+            }
+    
+            for($i = 1; $i <= 12; $i++){
+                if(!empty($servmcount[$i])){
+                    $serArr[$i] = $servmcount[$i];    
+                }else{
+                    $serArr[$i] = 0;    
+                }
+            }
+
             $search_text = $_GET['query'];
             $servs = DB::table('servisans')->where('KodeServis','LIKE','%'.$search_text.'%')
             ->orWhere('NamaBarang','LIKE','%'.$search_text.'%')
@@ -267,6 +365,7 @@ class ServisanControllers extends Controller
             ->orderBy('id')
             ->paginate();
             return view ('servs.index', [
+                'serArr' => array_values($serArr),
                 'servs' => $servs,
                 'berhasil' => Servisan::where('Status','Berhasil')->count(),
                 'cancel' => Servisan::where('Status','Cancel')->count(),

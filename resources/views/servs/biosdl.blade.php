@@ -1,4 +1,4 @@
-@extends('layoutdash')
+@extends('layoutdashrep')
 
 @section('content')
     <div class="flex relative" x-data="{navOpen: false}">
@@ -220,3 +220,4 @@
     </div>
 
 @endsection
+

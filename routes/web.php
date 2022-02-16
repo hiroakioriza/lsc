@@ -55,6 +55,7 @@ Route::get('kodeservice',[ServisanControllers::class, 'searchout'])->name('kod.s
 
 /* Report Data Route */
 Route::get('dashboard/report/filter',[ServisanControllers::class, 'filterdate'])->name('filter.date');
+Route::get('dashboard/report/pdfexp',[ServisanControllers::class, 'rekapdata'])->name('rekap.data');
 
 /* Bios File Route */
 Route::get('dashboard/filebios',[ServisanControllers::class, 'dashbios'])->name('dashboard.bios');
