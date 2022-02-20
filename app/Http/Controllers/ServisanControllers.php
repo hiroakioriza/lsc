@@ -388,10 +388,10 @@ class ServisanControllers extends Controller
 
             $search_text = $_GET['kd'];
             $servs = DB::table('servisans')->where('KodeServis',$search_text)->paginate(1);
-            return view('customer',['servs'=>$servs]);
+            return view('welcome',['servs'=>$servs]);
 
         }else{
-            return view('customer');
+            return view('welcome');
         }
     }
 

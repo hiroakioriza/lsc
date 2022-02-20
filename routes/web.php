@@ -19,8 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('Customer', function () {
-    return view('customer');
+Route::get('About', function () {
+    return view('about');
 });
 
 Route::get('Sparepart', function () {

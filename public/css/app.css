@@ -2342,11 +2342,17 @@ html {
 .-z-0 {
   z-index: 0;
 }
+.z-10 {
+  z-index: 10;
+}
+.z-auto {
+  z-index: auto;
+}
+.z-50 {
+  z-index: 50;
+}
 .col-span-12 {
   grid-column: span 12 / span 12;
-}
-.col-span-6 {
-  grid-column: span 6 / span 6;
 }
 .-m-4 {
   margin: -1rem;
@@ -2523,9 +2529,6 @@ html {
 .h-28 {
   height: 7rem;
 }
-.h-36 {
-  height: 9rem;
-}
 .max-h-96 {
   max-height: 24rem;
 }
@@ -2583,11 +2586,11 @@ html {
 .w-52 {
   width: 13rem;
 }
-.w-auto {
-  width: auto;
-}
 .w-56 {
   width: 14rem;
+}
+.w-auto {
+  width: auto;
 }
 .min-w-max {
   min-width: -webkit-max-content;
@@ -2687,6 +2690,9 @@ html {
 .gap-y-1 {
   row-gap: 0.25rem;
 }
+.gap-y-52 {
+  row-gap: 13rem;
+}
 .space-x-8 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(2rem * var(--tw-space-x-reverse));
@@ -2731,6 +2737,16 @@ html {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.75rem * var(--tw-space-x-reverse));
   margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
+}
+.space-y-40 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(10rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(10rem * var(--tw-space-y-reverse));
+}
+.-space-y-48 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(-12rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(-12rem * var(--tw-space-y-reverse));
 }
 .overflow-auto {
   overflow: auto;
@@ -2912,6 +2928,10 @@ html {
   -o-object-fit: fill;
      object-fit: fill;
 }
+.object-none {
+  -o-object-fit: none;
+     object-fit: none;
+}
 .object-center {
   -o-object-position: center;
      object-position: center;
@@ -2942,6 +2962,27 @@ html {
 }
 .p-12 {
   padding: 3rem;
+}
+.p-20 {
+  padding: 5rem;
+}
+.p-36 {
+  padding: 9rem;
+}
+.p-40 {
+  padding: 10rem;
+}
+.p-28 {
+  padding: 7rem;
+}
+.p-16 {
+  padding: 4rem;
+}
+.p-32 {
+  padding: 8rem;
+}
+.p-24 {
+  padding: 6rem;
 }
 .px-5 {
   padding-left: 1.25rem;
@@ -3035,9 +3076,21 @@ html {
   padding-left: 0.875rem;
   padding-right: 0.875rem;
 }
-.py-10 {
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
+.py-40 {
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+}
+.py-60 {
+  padding-top: 15rem;
+  padding-bottom: 15rem;
+}
+.py-52 {
+  padding-top: 13rem;
+  padding-bottom: 13rem;
+}
+.py-44 {
+  padding-top: 11rem;
+  padding-bottom: 11rem;
 }
 .pt-10 {
   padding-top: 2.5rem;
@@ -3398,10 +3451,6 @@ html {
   }
 }
 @media (min-width: 640px) {
-
-  .sm\:col-span-6 {
-    grid-column: span 6 / span 6;
-  }
 
   .sm\:-m-4 {
     margin: -1rem;

@@ -20,8 +20,8 @@
                     <li><a href="/" aria-label="Home" title="Home"
                             class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">Home</a>
                     </li>
-                    <li><a href="Customer" aria-label="Customer" title="Customer"
-                            class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">Customer</a>
+                    <li><a href="About" aria-label="About" title="About"
+                            class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">About us</a>
                     </li>
                 </ul>
                 <a href="/" aria-label="LSC" title="LSC" class="inline-flex items-center">
@@ -75,8 +75,8 @@
                                     <li><a href="/" aria-label="Home" title="Home"
                                             class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">Home</a>
                                     </li>
-                                    <li><a href="Customer" aria-label="Customer" title="Customer"
-                                            class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">Customer</a>
+                                    <li><a href="About" aria-label="About" title="About"
+                                            class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">About us</a>
                                     </li>
                                     <li><a href="Sparepart" aria-label="Sparepart" title="Sparepart"
                                             class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">Sparepart</a>

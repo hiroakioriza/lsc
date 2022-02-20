@@ -1,4 +1,4 @@
-@extends('layoutdashrep')
+@extends('layoutdash')
 
 @section('content')
     <div class="flex relative justify-center" x-data="{navOpen: false}">
