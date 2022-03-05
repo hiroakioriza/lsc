@@ -100,6 +100,9 @@
                                 <a href="{{ route('dashboard.bios') }}" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded">
                                     Bios File Manager
                                 </a>
+                                <a href="{{ route('dashboard.gallery') }}" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded">
+                                    Gallery Manager
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -190,7 +193,7 @@
                                     <td class="py-3 px-6 text-left">{{ $servisan->KodeServis }}</td>
                                     <td class="py-3 px-6 text-center">{{ $servisan->NamaBarang }}</td>
                                     <td class="py-3 px-6 text-center">{{ $servisan->Kategori }}</td>
-                                    <td class="py-3 px-6 text-center">{{ $servisan->Kondisi }}</td>
+                                    <td class="py-3 px-6 text-center">{{ mb_strimwidth($servisan->Kondisi, 0, 10, '...') }}</td>
                                     <td class="py-3 px-6 text-center">
                                         @switch($servisan->Status)
                                         @case("Barang Masuk")

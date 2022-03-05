@@ -31,7 +31,7 @@
                     <li><a href="Sparepart" aria-label="Sparepart" title="Sparepart"
                             class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">Sparepart</a>
                     </li>
-                    <li><a href="Gallery" aria-label="Gallery" title="Gallery"
+                    <li><a href="{{ route('Gallery') }}" aria-label="Gallery" title="Gallery"
                             class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">Gallery</a>
                     </li>
                 </ul>
@@ -81,7 +81,7 @@
                                     <li><a href="Sparepart" aria-label="Sparepart" title="Sparepart"
                                             class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">Sparepart</a>
                                     </li>
-                                    <li><a href="Gallery" aria-label="Gallery" title="Gallery"
+                                    <li><a href="{{ route('Gallery') }}" aria-label="Gallery" title="Gallery"
                                             class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">Gallery</a>
                                     </li>
                                 </ul>

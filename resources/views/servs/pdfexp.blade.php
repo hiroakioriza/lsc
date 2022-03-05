@@ -22,7 +22,6 @@
                                 <th class="py-3 px-6 text-left">Kode Servis</th>
                                 <th class="py-3 px-6 text-center">Nama Barang</th>
                                 <th class="py-3 px-6 text-center">Kategori Barang</th>
-                                <th class="py-3 px-6 text-center">Kondisi</th>
                                 <th class="py-3 px-6 text-center">Status</th>
                                 <th class="py-3 px-6 text-center">Pendapatan</th>
                             </tr>
@@ -31,11 +30,10 @@
                             @foreach ($servs as $key => $servisan)
                                 <tr class="border-b border-gray-200 hover:bg-gray-100">
                                     <th scope="row" class="py-3 px-6 text-left" width="20px">{{ ++$key }}</th>
-                                    <td class="py-3 px-6 text-center">{{ $servisan->created_at }}</td>
+                                    <td class="py-3 px-6 text-center">{{ $servisan->updated_at }}</td>
                                     <td class="py-3 px-6 text-left">{{ $servisan->KodeServis }}</td>
                                     <td class="py-3 px-6 text-center">{{ $servisan->NamaBarang }}</td>
                                     <td class="py-3 px-6 text-center">{{ $servisan->Kategori }}</td>
-                                    <td class="py-3 px-6 text-center">{{ $servisan->Kondisi }}</td>
                                     <td class="py-3 px-6 text-center">
                                         @switch($servisan->Status)
                                         @case("Barang Masuk")

@@ -27,9 +27,6 @@ Route::get('Sparepart', function () {
     return view('sparepart');
 });
 
-Route::get('Gallery', function () {
-    return view('gallery');
-});
 
 Route::get('Comingsoon', function () {
     return view('comingsoon');
@@ -57,15 +54,19 @@ Route::get('kodeservice',[ServisanControllers::class, 'searchout'])->name('kod.s
 Route::get('dashboard/report/filter',[ServisanControllers::class, 'filterdate'])->name('filter.date');
 Route::get('dashboard/report/pdfexp',[ServisanControllers::class, 'rekapdata'])->name('rekap.data');
 
-/* Bios File Route */
+/* Bios File Manager Route */
 Route::get('dashboard/filebios',[ServisanControllers::class, 'dashbios'])->name('dashboard.bios');
 Route::get('dashboard/filebios/create',[ServisanControllers::class, 'createbios'])->name('dashboard.bioscreate');
 Route::post('biosuploaded',[ServisanControllers::class, 'biosup'])->name('uploadingbios');
 Route::delete('deletebios/{id}',[ServisanControllers::class, 'destroybios'])->name('delete.bios');
 Route::get('dashboard/filebios/{downbios}/download',[ServisanControllers::class, 'downloadbios'])->name('download.bios');
 
-
-
+/* Gallery Manager Route */
+Route::get('dashboard/gallery',[ServisanControllers::class, 'dashgallery'])->name('dashboard.gallery');
+Route::get('dashboard/gallery/create',[ServisanControllers::class, 'addimage'])->name('dashboard.addimage');
+Route::post('imageuploaded',[ServisanControllers::class, 'galleryup'])->name('uploadingimage');
+Route::delete('deleteimage/{id}',[ServisanControllers::class, 'destroyimage'])->name('delete.image');
+Route::get('Gallery',[ServisanControllers::class, 'gallerylisted'])->name('Gallery');
 
 
 

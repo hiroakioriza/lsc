@@ -20,27 +20,22 @@
 
 <div class="grid min-h-screen place-items-center">
     <div class="w-11/12 p-12 bg-white sm:w-8/12 md:w-1/2 lg:w-5/12 shadow-lg">
-      <h1 class="text-xl font-semibold">Input Bios File</h1>
-      <form class="mt-6" action="{{ route('uploadingbios') }}" method="POST" enctype="multipart/form-data">
+      <h1 class="text-xl font-semibold">Add Image Gallery</h1>
+      <form class="mt-6" action="{{ route('uploadingimage') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <label class="block text-xs font-semibold text-gray-600 uppercase">Nama Bios</label>
-        <input type="text" name="namabios" placeholder="Asus A43SA" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required/>
-        <label class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Kategori Bios</label>
-        <select type="text" name="kategoribios" placeholder="Kategori Barang" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
-            <option disabled="disabled" selected="selected">Bios Kategori</option> 
-            <option>Asus</option> 
-            <option>Acer</option> 
-            <option>Axioo</option>
-        </select>
-        <label class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Keterangan Bios</label>
-        <textarea type="text" name="keteranganbios" placeholder="Masuk Air" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner h-32" maxlength="50"/></textarea>
-        <label for="EstHarga" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">File Bios :</label>
+        <label class="block text-xs font-semibold text-gray-600 uppercase">Nama Gambar</label>
+        <input type="text" name="namabarang" placeholder="Servis Mac" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required/>
+
+        <label class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Detail Gambar</label>
+        <textarea type="text" name="keterangan" placeholder="Memperbaiki Laptop Mac" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner h-32" maxlength="100"/></textarea>
+        
+        <label class="block mt-2 text-xs font-semibold text-gray-600 uppercase">File Gambar :</label>
         <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue-500 rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue-600 hover:text-white">
             <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                 <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
             </svg>
             <span class="mt-2 text-base leading-normal">Select a file</span>
-            <input type='file' name="filebios" accept="application/zip, application/octet-stream" class="hidden" onchange="getFileData(this);" />
+            <input type='file' name="filegambar" accept="image/png, image/jpg, image/jpeg" class="hidden" onchange="getFileData(this);" />
           </label>
         <p id="inputname" class="block mt-2 text-xs font-semibold text-gray-600 uppercase"></p>
 

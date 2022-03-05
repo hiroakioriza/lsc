@@ -30,7 +30,7 @@
         </a>
         <ul class="flex items-center hidden space-x-8 lg:flex">
           <li><a href="Sparepart" aria-label="Sparepart" title="Sparepart" class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">Sparepart</a></li>
-          <li><a href="Gallery" aria-label="Gallery" title="Gallery" class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">Gallery</a></li>
+          <li><a href="{{ route('Gallery') }}" aria-label="Gallery" title="Gallery" class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">Gallery</a></li>
         </ul>
 
         <!-- Mobile menu -->
@@ -65,7 +65,7 @@
                   <li><a href="/" aria-label="Home" title="Home" class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">Home</a></li>
                   <li><a href="About" aria-label="About" title="About" class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">About us</a></li>
                   <li><a href="Sparepart" aria-label="Sparepart" title="Sparepart" class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">Sparepart</a></li>
-                  <li><a href="Gallery" aria-label="Gallery" title="About us" class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">Gallery</a></li>
+                  <li><a href="{{ route('Gallery') }}" aria-label="Gallery" title="About us" class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">Gallery</a></li>
                 </ul>
               </nav>
             </div>
@@ -194,7 +194,7 @@
 @endif
 
   <!-- Footer -->
-  <footer class="p-24 footer bg-gray-900 text-base-content footer-center">
+  <footer class="p-40 footer bg-gray-900 text-base-content footer-center">
   </footer>
   <!-- End Footer -->
 

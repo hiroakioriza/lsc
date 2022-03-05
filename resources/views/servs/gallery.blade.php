@@ -46,9 +46,9 @@
                                     </path>
                                 </svg>
                             </div>
-                            <form action="{{ route('dashboard.bioscreate') }}">
+                            <form action="{{ route('dashboard.addimage') }}">
                                 <button
-                                    class="btn btn-primary w-full rounded bg-blue-600 border-none focus:outline-none focus:ring-0">Post Bios
+                                    class="btn btn-primary w-full rounded bg-blue-600 border-none focus:outline-none focus:ring-0">Post Gallery
                                 </button>
                             </form>
                         </div>
@@ -93,13 +93,13 @@
                             </div>
                             <div x-show="open"
                                 class="text-sm border-l-2 border-gray-800 mx-6 my-2.5 px-2.5 flex flex-col gap-y-1">
-                                <a href="{{ route('dashboard.report') }}" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded">
+                                <a href="{{ route('dashboard.report') }}" class="block py-2 px-4 hover:bg-gray-800 rounded">
                                     Rekap Data
                                 </a>
-                                <a href="{{ route('dashboard.bios') }}" class="block py-2 px-4  bg-gray-800 text-white hover:text-white rounded">
+                                <a href="{{ route('dashboard.bios') }}" class="block py-2 px-4  hover:bg-gray-800 hover:text-white rounded">
                                     Bios File Manager
                                 </a>
-                                <a href="{{ route('dashboard.gallery') }}" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded">
+                                <a href="{{ route('dashboard.bios') }}" class="block py-2 px-4 bg-gray-800 text-white hover:text-white rounded">
                                     Gallery Manager
                                 </a>
                             </div>
@@ -146,7 +146,7 @@
             </div>
             <section class="max-w-7xl mx-auto py-4 px-5">
                 <div class="flex justify-between items-center border-b border-gray-300">
-                    <h1 class="text-2xl font-semibold pt-2 pb-6">Bios File Manager</h1>
+                    <h1 class="text-2xl font-semibold pt-2 pb-6">Gallery Manager</h1>
                 </div>
 
                 @if ($message = Session::get('succes'))
@@ -161,36 +161,24 @@
                         <thead>
                             <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                                 <th class="py-3 px-6 text-left" width="20px">No</th>
-                                <th class="py-3 px-6 text-center">Nama Bios</th>
-                                <th class="py-3 px-6 text-left">Kategori Bios</th>
-                                <th class="py-3 px-6 text-center">Keterangan Bios</th>
+                                <th class="py-3 px-6 text-left">Gambar</th>
+                                <th class="py-3 px-6 text-center">Nama Barang</th>
+                                <th class="py-3 px-6 text-center">Keterangan</th>
                                 <th class="py-3 px-6 text-center">Action</th>
                                 
                             </tr>
                         </thead>
                         <tbody class="text-gray-600 text-sm">
-                            @foreach ($servs as $key => $biosfile)
+                            @foreach ($servs as $key => $galleryfile)
                                 <tr class="border-b border-gray-200 hover:bg-gray-100">
                                     <th scope="row" class="py-3 px-6 text-left" width="20px">{{ ++$key }}</th>
-                                    <td class="py-3 px-6 text-center">{{ mb_strimwidth($biosfile->namabios, 0, 20, '...') }}</td>
-                                    <td class="py-3 px-6 text-left">{{ $biosfile->kategoribios }}</td>
-                                    <td class="py-3 px-6 text-center">{{ mb_strimwidth($biosfile->keteranganbios, 0, 20, '...' ) }}</td>
+                                    <td class="py-3 px-6"><img width="100px" src="{{ asset('storage/' . $galleryfile->filegambar) }}"></td>
+                                    <td class="py-3 px-6 text-center">{{ mb_strimwidth($galleryfile->namabarang, 0, 20, '...') }}</td>
+                                    <td class="py-3 px-6 text-center">{{ mb_strimwidth($galleryfile->keterangan, 0, 20, '...') }}</td>
                                     <td class="py-3 px-6 text-center">
                                         <div class="flex item-center justify-center">
 
-                                            <div
-                                                class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110 cursor-pointer cursor-pointer">
-                                                <a href="{{ route('download.bios', $biosfile->id) }}">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                        stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="1"
-                                                            d="M15.608,6.262h-2.338v0.935h2.338c0.516,0,0.934,0.418,0.934,0.935v8.879c0,0.517-0.418,0.935-0.934,0.935H4.392c-0.516,0-0.935-0.418-0.935-0.935V8.131c0-0.516,0.419-0.935,0.935-0.935h2.336V6.262H4.392c-1.032,0-1.869,0.837-1.869,1.869v8.879c0,1.031,0.837,1.869,1.869,1.869h11.216c1.031,0,1.869-0.838,1.869-1.869V8.131C17.478,7.099,16.64,6.262,15.608,6.262z M9.513,11.973c0.017,0.082,0.047,0.162,0.109,0.226c0.104,0.106,0.243,0.143,0.378,0.126c0.135,0.017,0.274-0.02,0.377-0.126c0.064-0.065,0.097-0.147,0.115-0.231l1.708-1.751c0.178-0.183,0.178-0.479,0-0.662c-0.178-0.182-0.467-0.182-0.645,0l-1.101,1.129V1.588c0-0.258-0.204-0.467-0.456-0.467c-0.252,0-0.456,0.209-0.456,0.467v9.094L8.443,9.553c-0.178-0.182-0.467-0.182-0.645,0c-0.178,0.184-0.178,0.479,0,0.662L9.513,11.973z" />
-                                                    </svg>
-                                                </a>
-                                            </div>
-
-                                            <form action="{{ route('delete.bios', $biosfile->id) }}" method="POST">
+                                            <form action="{{ route('delete.image', $galleryfile->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <div

@@ -11,6 +11,7 @@ use Session;
 use File;
 use Carbon\Carbon;
 use App\Models\Servisan;
+use App\Models\Gallery;
 use App\Models\User;
 use App\Models\Biosfile;
 
@@ -155,7 +156,9 @@ class ServisanControllers extends Controller
         return Redirect('login-admin');
     }
 
-    
+
+     /* ======================================================================================================== */
+
     /* Registration Admin */
 
     public function registrationadmin()
@@ -189,6 +192,9 @@ class ServisanControllers extends Controller
         'password' => Hash::make($data['password'])
       ]);
     }   
+
+
+     /* ======================================================================================================== */
     
      /* Registration User */
 
@@ -225,6 +231,9 @@ class ServisanControllers extends Controller
      }   
     
 
+      /* ======================================================================================================== */
+
+      /* Servisan Section */
 
     /**
      * Show the form for creating a new resource.
@@ -413,6 +422,8 @@ class ServisanControllers extends Controller
     }
 
 
+     /* ======================================================================================================== */
+
     /* Bios Section Files */
 
     public function dashbios()
@@ -441,7 +452,7 @@ class ServisanControllers extends Controller
             'namabios' => 'required',
             'kategoribios' => 'required',
             'keteranganbios' => 'required',
-			'filebios' => 'required|file|mimes:bin',
+			'filebios' => 'required|file|mimes:bin,zip,rar',
 		]);
 
         $filebios = $request->file('filebios');
@@ -492,5 +503,74 @@ class ServisanControllers extends Controller
         $biosdown = Biosfile::where('id', $downbios)->firstOrFail();
         $pathToFile = storage_path('data_filebios/' . $biosdown->filebios);
         return response()->download($pathToFile);
+    }
+
+
+    /* ======================================================================================================== */
+
+     /* Gambar Section Files */
+
+    public function dashgallery()
+    {
+        if(Auth::check()){
+            $servs = Gallery::latest()->paginate(5);
+            return view ('servs.gallery', [
+                'servs' => $servs,
+            ]);
+        }
+
+        return redirect("login-admin")->with('succes','You are not allowed to access');
+    }
+
+    public function galleryup(Request $request)
+    {
+        $this->validate($request, [
+            'namabarang' => 'required',
+            'keterangan' => 'required',
+			'filegambar' => 'required|file|mimes:png,jpg,jpeg',
+		]);
+
+        Gallery::create(
+            [
+                'namabarang' => $request->namabarang,
+                'keterangan' => $request->keterangan,
+                'filegambar' => $request->file('filegambar')->store('data_filegambar', 'public'),    
+            ]
+        );
+
+        return redirect('dashboard/gallery')->with('succes','Data Berhasil di Input');
+    }
+
+    public function addimage()
+    {
+        if(Auth::check()){
+            return view('servs.addpicture');
+        }
+        return redirect("login-admin")->with('succes','You are not allowed to access');
+
+    }
+
+    public function destroyimage($id)
+    {
+        if(Auth::check()){
+            $servs = Gallery::where('id',$id)->first();
+            $pathFile = storage_path('data_filegambar/' . $servs->filegambar);
+            $paths = File::delete($pathFile);
+
+            Gallery::where('id',$id)->delete();
+
+            return redirect('dashboard/gallery')->with('succes','Data Berhasil di Hapus');
+        }
+
+        return redirect("login-admin")->with('succes','You are not allowed to access');
+
+    }
+
+    public function gallerylisted()
+    {
+        $servs = Gallery::latest()->get();
+        return view ('gallery', [
+           'servs' => $servs,
+        ]);
     }
 }
